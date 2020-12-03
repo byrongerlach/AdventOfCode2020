@@ -58,10 +58,10 @@ namespace Challenges
 
             var found = false;
 
-            if (Password.Length <= minPosition + 1 && Password[minPosition] == token)
+            if (Password.Length >= minPosition + 1 && Password[minPosition] == token)
                 found = true;
 
-            return (found ^ (Password.Length <= maxPosition + 1 && Password[maxPosition] == token));
+            return (found ^ (Password.Length >= maxPosition + 1 && Password[maxPosition] == token));
         }
 
         /// <summary>
