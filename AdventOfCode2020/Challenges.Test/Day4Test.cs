@@ -153,6 +153,11 @@ namespace Challenges.Test
             foreach (var passport in Day4.GetPassports(lines)) 
             {
                 passport.PopulateFields();
+
+                // Only show valid ones.
+                if (!passport.IsVaild())
+                    continue;
+                
                 var requiredFields = new HashSet<string> { "ecl", "pid", "eyr", "hcl", "byr", "iyr", "hgt" };
 
                 TestContext.WriteLine($"Passport #{count++}");
@@ -174,29 +179,6 @@ namespace Challenges.Test
 
                 TestContext.WriteLine($"-----------");
             }
-        }
-
-        [TestMethod]
-        public void MyTestMethod()
-        {
-            var number = "170cm";
-            var pattern = @"^([\d]+)(cm|in)";
-
-            var matches = Regex.Match(number, pattern);
-
-            Assert.IsTrue(matches.Success);
-
-            Assert.AreEqual("170", matches.Groups[1].Value);           
-            Assert.AreEqual("cm", matches.Groups[2].Value);           
-
-
-            matches = Regex.Match("cm", pattern);
-            Assert.IsFalse(matches.Success); 
-            
-            matches = Regex.Match("170", pattern);
-            Assert.IsFalse(matches.Success); 
-           
-
         }
     }
 }

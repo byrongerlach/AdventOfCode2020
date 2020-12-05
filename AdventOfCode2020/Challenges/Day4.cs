@@ -113,7 +113,6 @@ namespace Challenges
                 hcl(Hair Color) - a # followed by exactly six characters 0-9 or a-f.
                 ecl(Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
                 pid(Passport ID) - a nine - digit number, including leading zeroes.
-
                 */
 
                 var requiredFields = new HashSet<string> { "ecl", "pid", "eyr", "hcl", "byr", "iyr", "hgt" };
@@ -209,7 +208,7 @@ namespace Challenges
                 }
 
                 // Check passport ID
-                if (!Regex.IsMatch(PassportFields["pid"], @"^[0-9]{9}"))
+                if (!Regex.IsMatch(PassportFields["pid"], @"^[0-9]{9}$"))
                 {
                     InvalidFieldName = "pid";
                     InvalidFieldValue = PassportFields["pid"];
